@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eric Hidari's Site</title>
+    <meta name="description" content="Eric Hidari — bioinformatics, HPC, software engineering, image analysis.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <script defer src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+    <script defer src="assets/js/app.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  <body x-data="siteData()" x-init="init()">
+    <header class="site-header">
+      <div class="banner">
+        <img src="assets/img/bar.jpg" alt="Banner" class="banner-img">
+      </div>
+      <div class="header-content">
+        <div class="wrap">
+          <div class="brand">
+            <span class="brand-title">Eric Hidari, Ph.D.</span>
+            <div class="brand-sub">
+              <a href="https://github.com/Eric-Kobayashi" target="_blank" rel="noopener">GitHub</a>
+              <span class="sep">·</span>
+              <a href="https://www.linkedin.com/in/eric-hidari-40841a161/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+          <nav class="main-nav">
+            <template x-for="cat in categories" :key="cat">
+              <button class="nav-link" :class="{active: activeCategory === cat}" @click="setCategory(cat)" x-text="cat"></button>
+            </template>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="ticker">
+      <div class="ticker-label">UPDATES</div>
+      <div class="ticker-track">
+        <div class="ticker-item" x-html="ticker"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <aside class="sidebar-left">
+        <div class="box">
+          <div class="box-hd">PROFILE</div>
+          <div class="box-bd">
+            <div class="profile-photo">
+              <img src="assets/img/me.jpg" alt="Eric Hidari" class="profile-img">
+            </div>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="box-hd">ABOUT ME</div>
+          <div class="box-bd small">
+            Research engineer with a career-long focus on biosciences. Initially trained as a wet-lab based microscopist, I have accumulated computational skills through performing image analysis, and by supporting researchers from a broad range of backgrounds. While maintaining a strong academic root, I want to leverage my understanding of software to design effective automation for the benefit of scientific research.
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="box-hd">PUBLICATIONS</div>
+          <div class="box-bd small">
+            <a href="https://scholar.google.com/citations?user=IDJrH6UAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <div class="toolbar">
+          <input class="search" type="search" placeholder="Search titles, tags, summaries" x-model.trim="searchQuery">
+        </div>
+
+        <!-- List View -->
+        <div x-show="currentView === 'list'" class="headline-list">
+          <template x-for="item in filteredItems()" :key="item.id">
+            <article class="headline" :class="{ 'clickable': item.category === 'Academic' || item.category === 'Software' }" 
+                     :data-project-type="item.category === 'Academic' || item.category === 'Software' ? item.category : null"
+                     @click="item.category === 'Academic' || item.category === 'Software' ? showProjectDetail(item) : null">
+              <div class="meta">
+                <span class="badge" x-text="item.category"></span>
+                <span class="date" x-text="item.date"></span>
+              </div>
+              <div class="title-row">
+                <h3 class="title" x-text="item.title"></h3>
+                <a x-show="item.href" :href="item.href" target="_blank" rel="noopener" class="ext-link" @click.stop>Open</a>
+              </div>
+              <div class="sub" x-text="item.sub"></div>
+              <div class="summary" x-text="item.summary"></div>
+            </article>
+          </template>
+        </div>
+
+        <!-- Project Detail View -->
+        <div x-show="currentView === 'detail'" class="project-detail">
+          <div class="project-header">
+            <button class="back-btn" @click="backToList()">← Back to Projects</button>
+            <div class="project-meta">
+              <span class="badge" x-text="selectedProject?.category"></span>
+              <span class="date" x-text="selectedProject?.date"></span>
+            </div>
+          </div>
+          
+          <div class="project-content">
+            <h1 class="project-title" x-text="selectedProject?.title"></h1>
+            <div class="project-subtitle" x-text="selectedProject?.sub"></div>
+            
+            <!-- Project Images -->
+            <div class="project-images" x-show="selectedProject?.thumbnail">
+              <img :src="selectedProject?.thumbnail + '?t=' + Date.now()" :alt="selectedProject?.title" class="project-main-image">
+            </div>
+            
+            <!-- Markdown Content -->
+            <div class="markdown-content" x-html="markdownContent" x-show="markdownContent"></div>
+            
+            <!-- Project Tags -->
+            <div class="project-tags">
+              <template x-for="tag in selectedProject?.tags || []" :key="tag">
+                <span class="tag" x-text="tag"></span>
+              </template>
+            </div>
+            
+            <!-- Loading State -->
+            <div class="loading-content" x-show="!markdownContent && selectedProject">
+              <div class="loading-spinner">Loading project details...</div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="sidebar-right">
+        <div class="box">
+          <div class="box-hd">SKILLS BY YEAR</div>
+          <div class="box-bd">
+            <ul class="skills-timeline">
+              <template x-for="row in skillsByYear" :key="row.year">
+                <li class="skills-timeline-item">
+                  <div class="skills-time" x-text="row.year"></div>
+                  <div class="skills-content" x-text="row.skills"></div>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+
+        
+
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>Last updated <span x-text="lastUpdated"></span></span>
+        <button class="back-to-top" @click="scrollToTop()" title="Back to top">Back to top</button>
+      </div>
+    </footer>
+
+    <!-- Image Zoom Modal -->
+    <div x-show="zoomedImage" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         class="image-zoom-overlay" 
+         :class="{ 'active': zoomedImage }"
+         @click="closeImageZoom()"
+         @keydown.escape="closeImageZoom()">
+      <div class="image-zoom-container" @click.stop>
+        <img :src="zoomedImage?.src" :alt="zoomedImage?.alt" />
+        <button class="image-zoom-close" @click="closeImageZoom()" aria-label="Close zoom">×</button>
+      </div>
+    </div>
+  </body>
+  </html>
+
+
