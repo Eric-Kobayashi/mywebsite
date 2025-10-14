@@ -10,14 +10,14 @@ function siteData() {
     markdownContent: "",
     zoomedImage: null,
 
-    // Data derived from CV
+    // Data derived from CV - Skills organized by acquisition year
     skillsByYear: [
-      { year: "2025", skills: "Nextflow, LLM agent, Hail" },
-      { year: "2024", skills: "Spack, Shell, R, HPC, Singularity" },
-      { year: "2023", skills: "JavaScript, Rust, SQL, OpenStack, S3" },
-      { year: "2022", skills: "Kubernetes, Pytest, CI/CD, Scrum" },
-      { year: "2020-21", skills: "QuPath, GitHub, Docker, LaTeX" },
-      { year: "2018-19", skills: "Python, MATLAB, ImageJ, Jupyter" },
+      { id: "skill-2018", year: "2018", skills: "Python, MATLAB, ImageJ, Jupyter", color: "#0ea5a0", height: 100 },
+      { id: "skill-2020", year: "2020", skills: "QuPath, GitHub, Docker, LaTeX", color: "#059669", height: 85 },
+      { id: "skill-2022", year: "2022", skills: "Kubernetes, Pytest, CI/CD, Scrum", color: "#0284c7", height: 60 },
+      { id: "skill-2023", year: "2023", skills: "JavaScript, Rust, SQL, OpenStack, S3", color: "#7c3aed", height: 45 },
+      { id: "skill-2024", year: "2024", skills: "Spack, Shell, R, HPC, Singularity", color: "#dc2626", height: 35 },
+      { id: "skill-2025", year: "2025", skills: "Nextflow, LLM agent, Hail", color: "#ea580c", height: 25 },
     ],
 
     items: [
@@ -143,21 +143,54 @@ function siteData() {
     // Methods
     init() {
       this.setupImageZoom();
+      this.setupScrollAnimations();
     },
     setupImageZoom() {
       // Add click handlers to all images after DOM is ready
       document.addEventListener('DOMContentLoaded', () => {
         this.addImageClickHandlers();
       });
-      
+
       // Also add handlers after markdown content is loaded
       this.$watch('markdownContent', () => {
         setTimeout(() => this.addImageClickHandlers(), 100);
       });
     },
+    setupScrollAnimations() {
+      // Animate experience bars when they come into view
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe experience bars after DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const experienceItems = document.querySelectorAll('.experience-item');
+          experienceItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(item);
+          });
+        }, 200);
+      });
+
+    },
     addImageClickHandlers() {
       const images = document.querySelectorAll('img');
       images.forEach(img => {
+        // Skip affiliation logos to allow link navigation without zoom
+        if (img.classList.contains('affiliation-logo')) return;
         // Remove existing handlers to avoid duplicates
         img.removeEventListener('click', this.handleImageClick);
         img.addEventListener('click', (e) => this.handleImageClick(e, img));

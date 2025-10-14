@@ -61,6 +61,20 @@
         </div>
 
         <div class="box">
+          <div class="box-hd">AFFILIATION</div>
+          <div class="box-bd">
+            <div class="affiliation-logos">
+              <a href="https://www.sanger.ac.uk/" target="_blank" rel="noopener" class="affiliation-link">
+                <img src="assets/img/sanger_logo.png" alt="Wellcome Sanger Institute" class="affiliation-logo">
+              </a>
+              <a href="https://www.cam.ac.uk/" target="_blank" rel="noopener" class="affiliation-link">
+                <img src="assets/img/cambridge_logo.png" alt="University of Cambridge" class="affiliation-logo">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="box">
           <div class="box-hd">PUBLICATIONS</div>
           <div class="box-bd small">
             <a href="https://scholar.google.com/citations?user=IDJrH6UAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
@@ -131,18 +145,26 @@
       </main>
 
       <aside class="sidebar-right">
-        <div class="box">
+        <div class="box skills-container">
           <div class="box-hd">TECH SKILLS</div>
           <div class="box-bd">
-            These are the technical skills I have focused on learning through my career, grouped by the year acquired.
-            <ul class="skills-timeline">
-              <template x-for="row in skillsByYear" :key="row.year">
-                <li class="skills-timeline-item">
-                  <div class="skills-time" x-text="row.year"></div>
-                  <div class="skills-content" x-text="row.skills"></div>
-                </li>
-              </template>
-            </ul>
+            <div class="skills-scroll-area">
+              <div class="experience-bars">
+                <template x-for="skill in skillsByYear" :key="skill.id">
+                  <div class="experience-item">
+                    <div class="experience-bar-container">
+                      <div class="experience-bar" :style="`height: ${skill.height}%`" x-bind:title="`Acquired in ${skill.year}`">
+                        <div class="experience-fill" :style="`height: ${skill.height}%; background: linear-gradient(to top, ${skill.color}, ${skill.color}dd);`"></div>
+                      </div>
+                      <div class="experience-info">
+                        <div class="experience-year" x-text="`Since ${skill.year}`"></div>
+                        <div class="experience-skills" x-text="skill.skills"></div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </div>
           </div>
         </div>
 

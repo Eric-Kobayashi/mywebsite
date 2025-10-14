@@ -92,91 +92,162 @@ a:visited { color: var(--link-visited); }
 .profile-name { font-weight: 700; margin-bottom: 6px; text-align: center; }
 .profile-links { font-size: 13px; }
 
-/* Skills Timeline (Lollipop Format) */
-.skills-timeline {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  position: relative;
-}
-
-.skills-timeline::before {
-  content: "";
-  position: absolute;
-  left: 14px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: color-mix(in srgb, #0ea5a0 35%, var(--line));
-}
-
-.skills-timeline-item {
-  position: relative;
-  padding-left: 56px;
-  margin: 24px 0;
-  line-height: 1.5;
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  column-gap: 12px;
+/* Affiliation */
+.affiliation-logos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   align-items: center;
 }
 
-.skills-timeline-item::before {
-  content: "";
-  position: absolute;
-  left: 6px;
-  top: 0em;
-  width: 16px;
-  height: 16px;
-  background: var(--card);
-  border: 3px solid #0ea5a0;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px var(--card);
+.affiliation-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
 }
 
-.skills-time {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: color-mix(in srgb, #0ea5a0 12%, var(--card));
-  color: var(--accent-ink);
-  font-weight: 600;
-  font-size: 12px;
-  text-align: center;
-  transition: transform 120ms ease, background-color 120ms ease;
+.affiliation-link:hover {
+  transform: translateY(-2px);
 }
 
-.skills-content {
-  color: var(--text);
-  font-size: 13px;
-  line-height: 1.4;
+.affiliation-logo {
+  width: 200px; /* larger for rectangular logos */
+  height: auto; /* preserve aspect ratio */
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  background: transparent; /* avoid shrinking visual area with padding background */
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.skills-timeline-item:hover .skills-time {
+.affiliation-logo:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   transform: translateY(-1px);
-  background: color-mix(in srgb, #0ea5a0 20%, var(--card));
-  box-shadow: 0 3px 10px color-mix(in srgb, #0ea5a0 18%, transparent);
 }
 
-/* Mobile responsive for skills timeline */
+/* Skills Container */
+.skills-container {
+  position: static;
+}
+
+.skills-scroll-area {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.skills-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.skills-scroll-area::-webkit-scrollbar-track {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.skills-scroll-area::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, #0ea5a0 40%, var(--line));
+  border-radius: 3px;
+}
+
+.skills-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, #0ea5a0 60%, var(--line));
+}
+
+
+.experience-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 4px 0;
+}
+
+.experience-item {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.experience-bar-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+
+.experience-bar {
+  position: relative;
+  width: 12px;
+  min-height: 40px;
+  background: var(--accent);
+  border: 1px solid var(--line);
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.experience-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px 5px 0 0;
+  transition: height 0.8s ease;
+}
+
+.experience-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.experience-year {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.experience-skills {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+/* Hover effects */
+.experience-item:hover .experience-bar {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.experience-item:hover .experience-year {
+  color: #0ea5a0;
+}
+
+/* Mobile responsive */
 @media (max-width: 900px) {
-  .skills-timeline::before {
-    left: 10px;
+  .skills-scroll-area {
+    max-height: 400px;
   }
-  
-  .skills-timeline-item {
-    grid-template-columns: 1fr;
-    padding-left: 32px;
-    column-gap: 8px;
-    margin: 20px 0;
+
+  .experience-bar-container {
+    gap: 6px;
   }
-  
-  .skills-timeline-item::before {
-    left: 2px;
+
+  .experience-bar {
+    width: 10px;
+    min-height: 30px;
   }
-  
-  .skills-time {
-    margin-bottom: 4px;
+
+  .experience-year {
+    font-size: 10px;
+  }
+
+  .experience-skills {
+    font-size: 12px;
   }
 }
 
@@ -582,15 +653,7 @@ a:visited { color: var(--link-visited); }
   background: rgba(255, 255, 255, 1);
 }
 
-/* Make all images clickable */
-img {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-img:hover {
-  transform: scale(1.02);
-}
+/* Images in content areas can have hover effects, but affiliation logos are handled separately */
 
 /* Responsive */
 @media (max-width: 1200px) {
