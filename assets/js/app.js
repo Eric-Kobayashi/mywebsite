@@ -138,7 +138,7 @@ function siteData() {
       { id: "contact-email-alt", category: "Contact", title: "Email (Alternative)", sub: "Academic contact", date: "", summary: "yz520[At]cam.ac.uk", tags: [] },
     ],
 
-    ticker: "GloBIAS Bioimage Analysis Conference 2025, Oct 26, 2025 - Oct 31, 2025 | Kobe, Japan. <a href='https://www.globias.org/activities/bioimage-analysis-conference-2025-in-kobe' target='_blank' rel='noopener'>Learn more</a>",
+    ticker: "🎄 Merry Christmas and Happy Holidays to all readers! Wishing you joy, peace, and wonderful moments with your loved ones. 🎅",
 
     // Methods
     init() {
