@@ -19,4 +19,4 @@ Using the WxS-QC pipeline developed at WSI, I performed the following steps:
 - [WxS-QC — cohort QC pipeline for WGS/WES](https://github.com/wtsi-hgi/wxs-qc)
 
 **Publications related to this work:**
-- [WxS-QC — a quality control pipeline for human Whole-Genome and Whole-Exome sequencing cohorts](https://www.biorxiv.org/content/10.1101/2025.12.15.694327v1), bioRxiv, 2025, doi: 10.1101/2025.12.15.694327
+- [WxS-QC — a quality control pipeline for human Whole-Genome and Whole-Exome sequencing cohorts](https://www.biorxiv.org/content/biorxiv/early/2025/12/17/2025.12.15.694327.full.pdf), bioRxiv, 2025, doi: 10.1101/2025.12.15.694327

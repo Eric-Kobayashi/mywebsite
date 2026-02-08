@@ -8,6 +8,16 @@ The main purpose of me choosing this opportunity is to apply my computational te
 - Settling-in allowance: JPY 200,000 (for tenure of 3+ months)
 - Round-trip airfare provided
 
+## Index
+
+- [Timeline](#timeline)
+- [Required application materials](#required-materials)
+- [Key points for FORM 2](#key-form2)
+- [Key points for FORM 1](#key-form1)
+- [Project idea (Ueda lab)](#project-idea)
+- [Additional resources](#resources)
+
+<a id="timeline"></a>
 ## Timeline (FY2026 3rd Call)
 
 | Milestone | Date |
@@ -29,6 +39,7 @@ Other FY2026 recruitment rounds for reference:
 | 2nd | 9 Jan 2026 | Mid May 2026 | Aug 2026 – Mar 2027 | 20 |
 | **3rd** | **5 Jun 2026** | **Late Sep 2026** | **Dec 2026 – Mar 2027** | **20** |
 
+<a id="required-materials"></a>
 ## Required Application Materials
 
 The total application is **12 pages**: FORM 1 (4 pages) + FORM 2 (7 pages) + Letter of Recommendation (1 page).
@@ -39,27 +50,33 @@ The total application is **12 pages**: FORM 1 (4 pages) + FORM 2 (7 pages) + Let
 | **FORM 2** (7 pages) | Candidate (me) | Candidate's application form including: personal info, permanent residency status, current appointment, academic degree, higher education history, previous appointments, language ability, list of major publications, research plan, and a signed declaration of eligibility. Must be in English or Japanese, Word or PDF, A4, 12pt Times New Roman recommended. | [Short-term FORM 2 (Word)](https://www.jsps.go.jp/file/storage/e-fellow/guideline_2026/2026_form2_short.docx) |
 | **Letter of Recommendation** (1 page) | Recommender (e.g. doctoral supervisor, not the host) | One-page recommendation letter, in English or Japanese, preferably on letterhead. Addressed to the host researcher or the President of JSPS. Must be signed (e-signature acceptable). | [Sample Letter (Word)](https://www.jsps.go.jp/file/storage/e-fellow/guideline_2026/Sample_Letter_of_Recommendation.docx) |
 
+<a id="key-form2"></a>
 ## Key Points for FORM 2 (Candidate's Form)
 
-- **Personal information**: Full name (as in passport), nationality, date of birth, sex, contact details
-- **Permanent residency**: Indicate if holding permanent residency in an eligible country (US, Canada, EU, UK, Switzerland, Norway, Russia)
-- **Current appointment**: Position, institution, department. Enter "PhD student" if still enrolled; "N/A" if no current affiliation
-- **Academic degree**: Select "Obtained" or "Expected". PhD diploma or degree certificate must be submitted before fellowship start (not at application time)
-- **Higher education**: List all higher education from undergraduate onwards
-- **Previous appointments**: Include current appointment if applicable
-- **Language ability**: Self-evaluate Japanese and English proficiency on a scale of 1–5
-- **List of major publications**: Published or accepted papers only (not under review). Underline own name in author lists
-- **Research plan**: Describe the proposed collaborative research
-- **Required conditions checklist**: Confirm eligibility (no Japanese nationality, no prior JSPS fellowship, etc.)
-- **Signature**: Candidate's own signature on the final page (e-signature or scanned acceptable)
+- **Higher education**: Compile all higher education entries (undergrad → PhD), with accurate dates/institutions
+- **Previous appointments**: Compile employment/positions (including current, if applicable) with dates and institutions
+- **List of major publications**: Curate and format published/accepted papers (exclude “under review”); underline your name in author lists
+  - **Page/format constraints**: Must stay within **FORM 2’s fixed 7-page layout**; do not change the format of any field (no resizing frames, adding/removing fields, deleting notes, or changing page count)
+- **Research plan**: Draft the cooperative research / research plan content clearly within the fixed layout
+  - **Page/format constraints**: **FORM 2 is exactly 7 pages** and the page count/layout **cannot be changed**
+  - **File constraints**: Upload as **Word or PDF**, **A4 portrait**, **≤ 3 MB**; do **not** edit the PDF using PDF editor functions after converting
+  - **Readability guidance**: **12 pt+** recommended (Times New Roman for text; Arial for figures/tables); avoid overly tight character spacing/width
 
+<a id="key-form1"></a>
 ## Key Points for FORM 1 (Host Researcher's Form)
 
 - **Research title**: Max 100 letters in English
+- **Review section selection**: Choose the Basic/Document/Panel review sections carefully (must match the Review Section Table)
 - **Proposed fellowship tenure**: Start date and period in one-month units
 - **Outline, significance and capability of cooperative research**: Describe research achievements, funding, and international activities of both host and candidate
-- **Justification to invite the candidate**: No charts/graphs/underlines allowed; up to 10 line breaks
+- **Justification to invite the candidate**: No charts/graphs/underlines allowed; keep formatting simple and readable (up to 10 line breaks permitted)
 
+<a id="project-idea"></a>
+## Project idea: closed-loop automation for single-molecule dynamics (Ueda lab)
+
+Automate the full workflow for **single-molecule dynamics** analysis as established in the **Ueda lab**, including **single-molecule tracking**. Use **cell culture robots** to automate sample preparation and **imaging automation** to run experiments, then run **automatic single-molecule tracking** and close the loop by using **machine learning** to form a feedback cycle that informs the next experiments.
+
+<a id="resources"></a>
 ## Additional Resources
 
 - [FY2026 Application Guideline (PDF)](https://www.jsps.go.jp/file/storage/j-fellow/j-fellow_14/application_requirements/2026/2026_applicationguideline_e.pdf)
