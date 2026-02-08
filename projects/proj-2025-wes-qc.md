@@ -12,6 +12,9 @@ Using the WxS-QC pipeline developed at WSI, I performed the following steps:
 - Verified within-trio relatedness using Hail PC-Relate and removed unrelated or duplicate samples;
 - Produced two final VCFs: one annotated with per-filter pass/fail flags, and one with the stringent filter applied.
 
+![Mutation spectra before and after QC](assets/img/wes-qc-mutation-spectra.png)
+*QC improves mutation spectra by removing low-quality genotypes*
+
 **Pipeline:**
 - [WxS-QC — cohort QC pipeline for WGS/WES](https://github.com/wtsi-hgi/wxs-qc)
 
