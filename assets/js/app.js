@@ -9,6 +9,7 @@ function siteData() {
     selectedProject: null,
     markdownContent: "",
     zoomedImage: null,
+    highlightProjectIds: new Set(["proj-2026-jsps", "proj-2020-aptamer", "proj-2024-softpack", "proj-2025-tau"]),
 
     // Data derived from CV - Skills organized by acquisition year
     skillsByYear: [
@@ -22,6 +23,15 @@ function siteData() {
 
     items: [
       // Projects - Ordered by year (ongoing first, then newest to oldest)
+      {
+        id: "proj-2026-jsps",
+        category: "Academic",
+        title: "JSPS Postdoctoral Fellowship (Short-term PE) — application",
+        sub: "Applicant",
+        date: "2026 – Planned",
+        summary: "Applying for the JSPS Short-term Postdoctoral Fellowship to bring bioinformatics and software engineering expertise to the Japanese research community.",
+        tags: ["Japan", "Fellowship", "Bioinformatics", "Collaboration"],
+      },
       {
         id: "proj-2025-tau",
         category: "Academic",
@@ -41,6 +51,15 @@ function siteData() {
         summary: "Managed >500 Spack recipes; built guided web interface; created LLM agent for automated recipe evolution.",
         tags: ["Spack", "LLM", "HPC", "Agent", "Vibe Coding", "Automation", "S3"],
         thumbnail: "assets/img/softpack-thumbnail.png",
+      },
+      {
+        id: "proj-2025-wes-qc",
+        category: "Software",
+        title: "Exome sequencing quality control for ALSPAC",
+        sub: "Bioinformatician",
+        date: "2025",
+        summary: "Cohort QC of ~22,000 whole-exome samples using the WxS-QC pipeline: contamination detection, population PCA, random forest variant filtering, genotype-array concordance, and relatedness checks.",
+        tags: ["Bioinformatics", "HPC", "Hail", "QC", "Pipeline", "Genomics"],
       },
       {
         id: "proj-2025-environment-report",
@@ -138,7 +157,7 @@ function siteData() {
       { id: "contact-email-alt", category: "Contact", title: "Email (Alternative)", sub: "Academic contact", date: "", summary: "yz520[At]cam.ac.uk", tags: [] },
     ],
 
-    ticker: "🎄 Merry Christmas and Happy Holidays to all readers! Wishing you joy, peace, and wonderful moments with your loved ones. 🎅",
+    ticker: "Preparing application for the JSPS Postdoctoral Fellowship (Short-term PE) — 3rd call deadline: 5 June 2026",
 
     // Methods
     init() {
@@ -232,8 +251,15 @@ function siteData() {
       this.markdownContent = "";
     },
     async loadMarkdownContent(projectId) {
+      const url = `projects/${projectId}.md`;
       try {
-        const response = await fetch(`projects/${projectId}.md?t=${Date.now()}`);
+        // Try with cache buster first, fall back to plain URL (for file:// protocol)
+        let response;
+        try {
+          response = await fetch(`${url}?t=${Date.now()}`);
+        } catch (e) {
+          response = await fetch(url);
+        }
         if (response.ok) {
           const markdownText = await response.text();
           // Use marked.js to convert markdown to HTML
@@ -256,6 +282,9 @@ function siteData() {
       const q = this.searchQuery.toLowerCase();
       return (text || "").toLowerCase().includes(q);
     },
+    isHighlighted(item) {
+      return this.highlightProjectIds.has(item.id);
+    },
     filteredItems() {
       const cat = this.activeCategory;
       return this.items.filter(item => {
@@ -264,6 +293,13 @@ function siteData() {
         const blob = [item.title, item.sub, item.summary, (item.tags || []).join(" ")].join(" ");
         return this.matchesQuery(blob);
       });
+    },
+    highlightedItems() {
+      return this.filteredItems().filter(item => this.isHighlighted(item));
+    },
+    nonHighlightedItems() {
+      if (this.searchQuery) return this.filteredItems();
+      return this.filteredItems().filter(item => !this.isHighlighted(item));
     },
   };
 }

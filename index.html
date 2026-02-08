@@ -88,8 +88,33 @@
         </div>
 
         <!-- List View -->
+        <div x-show="currentView === 'list' && searchQuery.length === 0 && highlightedItems().length > 0" class="highlight-section">
+          <div class="highlight-header">Highlighted</div>
+          <div class="headline-list highlight-list">
+            <template x-for="item in highlightedItems()" :key="item.id">
+              <article class="headline" :class="{ 'clickable': item.category === 'Academic' || item.category === 'Software' }" 
+                       :data-project-type="item.category === 'Academic' || item.category === 'Software' ? item.category : null"
+                       @click="item.category === 'Academic' || item.category === 'Software' ? showProjectDetail(item) : null">
+                <div class="meta">
+                  <span class="badge" x-text="item.category"></span>
+                  <span class="date" x-text="item.date"></span>
+                </div>
+                <div class="title-row">
+                  <div class="title-with-star">
+                    <h3 class="title" x-text="item.title"></h3>
+                    <span class="highlight-star" x-show="isHighlighted(item)" title="Highlighted">★</span>
+                  </div>
+                  <a x-show="item.href" :href="item.href" target="_blank" rel="noopener" class="ext-link" @click.stop>Open</a>
+                </div>
+                <div class="sub" x-text="item.sub"></div>
+                <div class="summary" x-text="item.summary"></div>
+              </article>
+            </template>
+          </div>
+        </div>
+
         <div x-show="currentView === 'list'" class="headline-list">
-          <template x-for="item in filteredItems()" :key="item.id">
+          <template x-for="item in nonHighlightedItems()" :key="item.id">
             <article class="headline" :class="{ 'clickable': item.category === 'Academic' || item.category === 'Software' }" 
                      :data-project-type="item.category === 'Academic' || item.category === 'Software' ? item.category : null"
                      @click="item.category === 'Academic' || item.category === 'Software' ? showProjectDetail(item) : null">
@@ -98,7 +123,10 @@
                 <span class="date" x-text="item.date"></span>
               </div>
               <div class="title-row">
-                <h3 class="title" x-text="item.title"></h3>
+                <div class="title-with-star">
+                  <h3 class="title" x-text="item.title"></h3>
+                  <span class="highlight-star" x-show="isHighlighted(item)" title="Highlighted">★</span>
+                </div>
                 <a x-show="item.href" :href="item.href" target="_blank" rel="noopener" class="ext-link" @click.stop>Open</a>
               </div>
               <div class="sub" x-text="item.sub"></div>
