@@ -4,6 +4,12 @@ The associated needs for automation, image and data analysis have cultivated my 
 
 For readers who are interested in the details of the work, I have included the link to the paper and the thesis, and the thesis abstract below.
 
+**Workflow automation:**
+- Imaging chamber design (wet lab)
+- Image acquisition automation (microscope component control, micromanager scripting)
+- Single-molecule localisation analysis (ImageJ)
+- Cluster analysis (python)
+- Statistical analysis (python + Jupyter notebook)
 
 **Publications related to this work:**
 - Method paper: [Nanoscopic characterisation of individual endogenous protein aggregates in human neuronal cells, ChemBioChem, 2018, 19(19), 2033-2038, doi: 10.1002/cbic.201800209](https://chemistry-europe.onlinelibrary.wiley.com/doi/full/10.1002/cbic.201800209)

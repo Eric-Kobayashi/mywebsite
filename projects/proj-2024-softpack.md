@@ -12,6 +12,7 @@ For details on the LLM agent, please see my blog post below.
 
 **Blog:**
 - [How I (almost) replaced myself with AI](https://medium.com/@eric.hidari/how-i-almost-replaced-myself-with-ai-8478e6b85142)
+    - featured in the [Augmented Coding issue 23](https://augmentedcoding.dev/issue-23/)
 
 ![Softpack Interface](assets/img/softpack-interface.png)
 *Web interface showing tags of all environments*

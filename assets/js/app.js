@@ -33,6 +33,16 @@ function siteData() {
         tags: ["Japan", "Fellowship", "Bioinformatics", "Collaboration"],
       },
       {
+        id: "proj-2026-globias-kobe",
+        category: "Academic",
+        title: "Connecting at GloBIAS Kobe — conference blog",
+        sub: "Author",
+        date: "2026",
+        summary: "Reflections on attending GloBIAS 2025 bioimage analysis conference: connecting with the community, participating in Taggathon curation, and exploring research engineering.",
+        tags: ["Conference", "Bioimage Analysis", "Community", "Japan", "Blog"],
+        href: "https://focalplane.biologists.com/2026/01/26/connecting-at-globias-kobe/",
+      },
+      {
         id: "proj-2025-tau",
         category: "Academic",
         title: "Tau aggregation mechanism — image analysis & simulation",

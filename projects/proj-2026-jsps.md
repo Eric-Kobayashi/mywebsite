@@ -72,9 +72,14 @@ The total application is **12 pages**: FORM 1 (4 pages) + FORM 2 (7 pages) + Let
 - **Justification to invite the candidate**: No charts/graphs/underlines allowed; keep formatting simple and readable (up to 10 line breaks permitted)
 
 <a id="project-idea"></a>
-## Project idea: closed-loop automation for single-molecule dynamics (Ueda lab)
+## Project idea: closed-loop automation for single-molecule cellular dynamics (Ueda lab)
 
-Automate the full workflow for **single-molecule dynamics** analysis as established in the **Ueda lab**, including **single-molecule tracking**. Use **cell culture robots** to automate sample preparation and **imaging automation** to run experiments, then run **automatic single-molecule tracking** and close the loop by using **machine learning** to form a feedback cycle that informs the next experiments.
+- Automate the full workflow for cellular dynamics analysis as established in the **Ueda lab**
+- Use **cell culture robots** to automate sample preparation
+- Develop **virtual staining** algorithm for brightfield image as upstream analysis
+- Run single-molecule fluorescence image acquisition
+- Run **automatic single-molecule tracking** (already established)
+- Close the loop by using **machine learning** to form a feedback cycle that informs the next experiments
 
 <a id="resources"></a>
 ## Additional Resources
