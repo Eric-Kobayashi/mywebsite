@@ -11,9 +11,6 @@ The main purpose of me choosing this opportunity is to apply my computational te
 ## Index
 
 - [Timeline](#timeline)
-- [Required application materials](#required-materials)
-- [Key points for FORM 2](#key-form2)
-- [Key points for FORM 1](#key-form1)
 - [Project idea (Ueda lab)](#project-idea)
 - [Additional resources](#resources)
 
@@ -28,11 +25,9 @@ The main purpose of me choosing this opportunity is to apply my computational te
 | Eric visit to Osaka University | 29 May 2026 |
 | **Final submission to JSPS from Osaka University** | **5 Jun 2026 (by 5 p.m. JST)** |
 
-*Note: This timeline reflects the current GitHub project milestone structure. The final submission is still made by the host researcher through Osaka University via the [JSPS Electronic Application System](https://www-shinsei.jsps.go.jp/topkokusai/top_kokusai.html).*
+*Note:  The final submission is made by the host researcher through Osaka University via the [JSPS Electronic Application System](https://www-shinsei.jsps.go.jp/topkokusai/top_kokusai.html).*
 
-Project tracker: [eric-jsps-plan](https://github.com/users/Eric-Kobayashi/projects/2)
-
-Access note: this project is private and requires access granted by Eric.
+Project tracker: [eric-jsps-plan](https://github.com/users/Eric-Kobayashi/projects/2) (access controlled)
 
 
 <a id="project-idea"></a>
